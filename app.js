@@ -26,12 +26,19 @@ while (i < 10) {
 	for (j = 0; j < people.length; j++){
 		for (x = 0; x < 2; x++)
       people[j].frames[i].push(Roll());
-      const sumTotal = people[j].frames[i].reduce((total, amount) => total + amount);
+    const sumTotal = people[j].frames[i].reduce((total, amount) => total + amount);
       people[j].frameScores.push(sumTotal)
         people[j].totalScore = people[j].frameScores.reduce((total, amount) => total + amount);
-      console.log("player" + [j + 1] +" frame score :" + people[j].frames[i]);
-      //console.log("player" + [j + 1] +" sum of array :" + sumTotal);
-  }
+      console.log("player" + [j + 1] +" frame " + [i + 1] + " score :" + people[j].frames[i]); 
+      console.log("player" + [j + 1] +" "+ sumTotal + "pins this turn");
+  }       
+  if(person_1.frameScores[i] > person_2.frameScores[i] && person_1.frameScores[i] > person_3.frameScores[i]){
+      console.log("Player1 is leading");
+    } else if(person_2.frameScores[i] > person_1.frameScores[i] && person_2.frameScores[i] > person_3.frameScores[i]){
+      console.log("Player2 is leading")
+    } else{
+      console.log("Player3 is leading")
+    }
   i++;
 }
 console.log("Player1 total score : " + person_1.totalScore);
