@@ -1,21 +1,19 @@
-class Person {
-	constructor() {
-    this.name = "";
-		this.frames = [[], [], [], [], [], [], [], [], [], []];
+function Person (){
+    this.frames = [[], [], [], [], [], [], [], [], [], []];
     this.frameScores = [];
-		this.totalScore = 0;
-	}
+    this.totalScore = 0;
+  
 }
 
 function Roll() {
-	if (people[j].frames[i].length < 1) {
-		this.pinsDown = Math.floor(Math.random() * 11);
-	} else {
-		this.pinsDown = Math.floor(
-			Math.random() * (11 - people[j].frames[i][0])
-		);
-	}
-	return pinsDown;
+  if (people[j].frames[i].length < 1) {
+    this.pinsDown = Math.floor(Math.random() * 11);
+  } else {
+    this.pinsDown = Math.floor(
+      Math.random() * (11 - people[j].frames[i][0])
+    );
+  }
+  return pinsDown;
 }
 
 let [person_1, person_2, person_3] = [new Person(), new Person(), new Person()];
@@ -23,8 +21,8 @@ let people = [person_1, person_2, person_3];
 let i = 0;
 
 while (i < 10) {
-	for (j = 0; j < people.length; j++){
-		for (x = 0; x < 2; x++)
+  for (j = 0; j < people.length; j++){
+    for (x = 0; x < 2; x++)
       people[j].frames[i].push(Roll());
     const sumTotal = people[j].frames[i].reduce((total, amount) => total + amount);
       people[j].frameScores.push(sumTotal)
