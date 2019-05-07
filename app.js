@@ -4,32 +4,34 @@ function Person() {
   this.totalScore = 0;
 }
 
-(function Game() {
-  this.roll = function() {
-    if (people[j].frames[i].length < 1) {
-      this.pinsDown = Math.floor(Math.random() * 11);
-    } else {
-      this.pinsDown = Math.floor(Math.random() * (11 - people[j].frames[i][0]));
-    }
-    return pinsDown;
-  };
-
+function Game() {
   let [person_1, person_2, person_3] = [
     new Person(),
     new Person(),
     new Person()
   ];
-  let people = [person_1, person_2, person_3];
+  this.people = [person_1, person_2, person_3];
   let i = 0;
 
+  this.roll = function() {
+    if (this.people[j].frames[i].length < 1) {
+      this.pinsDown = Math.floor(Math.random() * 11);
+    } else {
+      this.pinsDown = Math.floor(
+        Math.random() * (11 - this.people[j].frames[i][0])
+      );
+    }
+    return this.pinsDown;
+  };
+
   while (i < 10) {
-    for (j = 0; j < people.length; j++) {
-      for (x = 0; x < 2; x++) people[j].frames[i].push(roll());
-      const sumTotal = people[j].frames[i].reduce(
+    for (j = 0; j < this.people.length; j++) {
+      for (x = 0; x < 2; x++) this.people[j].frames[i].push(this.roll());
+      const sumTotal = this.people[j].frames[i].reduce(
         (total, amount) => total + amount
       );
-      people[j].frameScores.push(sumTotal);
-      people[j].totalScore = people[j].frameScores.reduce(
+      this.people[j].frameScores.push(sumTotal);
+      this.people[j].totalScore = this.people[j].frameScores.reduce(
         (total, amount) => total + amount
       );
       console.log(
@@ -38,7 +40,7 @@ function Person() {
           " frame " +
           [i + 1] +
           " score :" +
-          people[j].frames[i]
+          this.people[j].frames[i]
       );
       console.log(
         "player" + [j + 1] + " knocked down" + " " + sumTotal + "pins this turn"
@@ -65,4 +67,4 @@ function Person() {
   console.log("Player2 total score : " + person_2.totalScore);
   console.log("Player3 total score : " + person_3.totalScore);
   // console.log(person_3.frames[3][0]);
-})();
+}
