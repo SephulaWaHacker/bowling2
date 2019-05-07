@@ -23,9 +23,19 @@ describe("10 pin bowling", function() {
     expect(game.pinsDown).toBeLessThan(11);
   });
 
-  it("should have more than 1 player", function(){
+  it("should have more than 1 player", function() {
     game = new Game();
-    expect(game.people.length).toBeGreaterThan(0)
-  })
+    expect(game.people.length).toBeGreaterThan(0);
+  });
 
+  it("should have score for each frame played per player", function() {
+    let i;
+    game = new Game();
+    while (i < 10) {
+      for (j = 0; j < game.people.length; j++) {
+        expect(game.people[j].frames[i].length).toBeGreaterThan(0);
+        }
+      i++;
+    }
+  });
 });
